@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "221558765745",
+    "project_id": "chezbank2",
+    "storage_bucket": "chezbank2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:221558765745:android:e7532b961b7af7eea18a90",
+        "android_client_info": {
+          "package_name": "com.example.chezbank2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "221558765745-llffm3h3rknrv5k1ltudvthrnjmd3a13.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhR8-mPamgPcWiIJd6z3LtL43GlqP_CIY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "221558765745-llffm3h3rknrv5k1ltudvthrnjmd3a13.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

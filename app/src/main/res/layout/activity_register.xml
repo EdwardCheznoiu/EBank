@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginSystem.Activities.RegisterActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="445dp"
+        android:layout_height="269dp"
+        android:src="@drawable/header"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="364dp"
+        android:layout_height="92dp"
+        android:layout_marginTop="16dp"
+        android:text="ChezBank"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="60sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView3" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="369dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="36dp"
+        android:text="New banking account"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.547"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <LinearLayout
+        android:layout_width="397dp"
+        android:layout_height="393dp"
+        android:layout_marginBottom="64dp"
+        android:gravity="center|top"
+        android:orientation="vertical"
+        android:paddingLeft="10px"
+        android:paddingTop="10px"
+        android:paddingRight="10px"
+        android:paddingBottom="10px"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.714"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <EditText
+            android:id="@+id/registerFname"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20px"
+            android:layout_marginBottom="20px"
+            android:ems="10"
+            android:hint="First name"
+            android:inputType="textPersonName"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/registerLname"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20px"
+            android:ems="10"
+            android:hint="Last name"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/registerEmail"
+            android:layout_width="320dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="20px"
+            android:ems="10"
+            android:hint="Ema"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/registerPassword"
+            android:layout_width="320dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="20px"
+            android:ems="10"
+            android:hint="Password"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/registerPasswordRpt"
+            android:layout_width="320dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="20px"
+            android:ems="10"
+            android:hint="Repeat Password"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/registerAge"
+            android:layout_width="320dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="20px"
+            android:ems="10"
+            android:hint="Age"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/registerCnp"
+            android:layout_width="320dp"
+            android:layout_height="48dp"
+            android:ems="10"
+            android:hint="CNP"
+            android:inputType="textPersonName" />
+
+        <Button
+            android:id="@+id/signUpBtnReg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="436dp"
+            android:text="SignUp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/signUpBtnReg2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="160dp"
+        android:layout_marginBottom="4dp"
+        android:text="SingUp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
