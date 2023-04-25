@@ -28,6 +28,12 @@ public class CardFragment extends Fragment {
     private TextView cardBalance;
     private TextView cardName;
 
+    /**
+     *
+     * @param param1
+     * @param param2
+     * @return
+     */
     public static CardFragment newInstance(String param1, String param2) {
         CardFragment fragment = new CardFragment();
         Bundle args = new Bundle();

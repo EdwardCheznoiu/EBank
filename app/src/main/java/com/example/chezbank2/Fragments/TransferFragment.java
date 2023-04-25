@@ -13,7 +13,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.chezbank2.Fragments.Obj.Transfer;
 import com.example.chezbank2.LoginSystem.Activities.LoginActivity;
+import com.example.chezbank2.LoginSystem.Obj.FirebaseUtilities;
+import com.example.chezbank2.MainActivity;
+import com.example.chezbank2.Obj.ActivityContext;
 import com.example.chezbank2.Obj.User;
 import com.example.chezbank2.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -36,8 +40,7 @@ public class TransferFragment extends Fragment {
     private int thisUserMoney = 0;
     private int otherUserMoney = 0;
     private Button sendBtn;
-    private FirebaseAuth fAuth = FirebaseAuth.getInstance();
-    private DatabaseReference mDatabase = FirebaseDatabase.getInstance("https://chezbank2-default-rtdb.europe-west1.firebasedatabase.app").getReference("users");
+    private FirebaseUtilities firebaseUtilities = new FirebaseUtilities();
     private TextView testEmail;
 
     @Override
@@ -53,7 +56,6 @@ public class TransferFragment extends Fragment {
         emailAddress = view.findViewById(R.id.emailAddress);
         value = view.findViewById(R.id.value);
         sendBtn = view.findViewById(R.id.sendMoneyBtn);
-        testEmail = view.findViewById(R.id.testEmail);
         sendMoney();
         return view;
     }
@@ -62,13 +64,14 @@ public class TransferFragment extends Fragment {
     private void sendMoney(){
         sendBtn.setOnClickListener(v -> {
             if(validateFields()){
-                updateDataBase();
+                updateBallance();
+                addTransferHistory();
             }
         });
     }
 
-    private void updateDataBase(){
-        Query userByEmail = mDatabase.orderByChild("userEmail").equalTo(emailAddress.getText().toString());
+    private void updateBallance(){
+        Query userByEmail = firebaseUtilities.getFirebaseData().getReference("users").orderByChild("userEmail").equalTo(emailAddress.getText().toString());
         userByEmail.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -84,7 +87,6 @@ public class TransferFragment extends Fragment {
                     else{
                         Toast.makeText(getContext(), "You don't have enough money!", Toast.LENGTH_SHORT).show();
                     }
-
                 }
             }
             @Override
@@ -94,8 +96,22 @@ public class TransferFragment extends Fragment {
         });
     }
 
+    private void addTransferHistory(){
+        Transfer transfer = new Transfer(FirebaseAuth.getInstance().getCurrentUser().getUid(), reciverName.getText().toString(), value.getText().toString());
+        firebaseUtilities.getFirebaseData().getReference("transactions")
+                .child(firebaseUtilities.getFirebaseData().getReference("transactions").push().getKey()).setValue(transfer)
+                .addOnCompleteListener(task1 -> {
+                    if (task1.isSuccessful()){
+                        Toast.makeText(getContext(),"A new entry was recorded", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        Toast.makeText(getContext(), "Not sync", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
     private int getThisUserMoney(){
-        mDatabase.child(fAuth.getUid()).child("userMoney").get().addOnCompleteListener(task -> {
+        firebaseUtilities.getFirebaseData().getReference("users").child(firebaseUtilities.getFirebaseAuth().getUid()).child("userMoney").get().addOnCompleteListener(task -> {
             if (task.isSuccessful()){
                 thisUserMoney = Integer.parseInt(task.getResult().getValue().toString());
             }
@@ -108,7 +124,7 @@ public class TransferFragment extends Fragment {
     }
 
     private int getOtherUserMoney(String uid){
-        mDatabase.child(uid.toString()).child("userMoney").get().addOnCompleteListener(task -> {
+        firebaseUtilities.getFirebaseData().getReference("users").child(uid.toString()).child("userMoney").get().addOnCompleteListener(task -> {
             if (task.isSuccessful()){
                 otherUserMoney = Integer.parseInt(task.getResult().getValue().toString());
             }
@@ -122,11 +138,11 @@ public class TransferFragment extends Fragment {
 
 
     private void updateCurentUser(){
-        mDatabase.child(fAuth.getUid()).child("userMoney").setValue(String.valueOf(thisUserMoney - Integer.parseInt(value.getText().toString())));
+        firebaseUtilities.getFirebaseData().getReference("users").child(firebaseUtilities.getFirebaseAuth().getUid()).child("userMoney").setValue(String.valueOf(thisUserMoney - Integer.parseInt(value.getText().toString())));
     }
 
     private void updateOtherUser(String uid){
-        mDatabase.child(uid).child("userMoney").setValue(String.valueOf(otherUserMoney + Integer.parseInt(value.getText().toString())));
+        firebaseUtilities.getFirebaseData().getReference("users").child(uid).child("userMoney").setValue(String.valueOf(otherUserMoney + Integer.parseInt(value.getText().toString())));
     }
 
     private void clearInputs(){

@@ -53,14 +53,16 @@
             app:layout_constraintVertical_bias="0.161" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="378dp"
-            android:layout_height="374dp"
+            android:layout_width="377dp"
+            android:layout_height="399dp"
             android:layout_marginTop="28dp"
             android:background="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.515"
+            app:layout_constraintHorizontal_bias="0.529"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2">
+            app:layout_constraintTop_toBottomOf="@+id/imageView2"
+            app:layout_constraintVertical_bias="0.139">
 
             <EditText
                 android:id="@+id/reciverName"
@@ -109,17 +111,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/value" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <TextView
-            android:id="@+id/testEmail"
-            android:layout_width="325dp"
-            android:layout_height="43dp"
-            android:layout_marginBottom="4dp"
-            android:text="TextView"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

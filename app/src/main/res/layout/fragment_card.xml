@@ -32,10 +32,10 @@
 
     <TextView
         android:id="@+id/userBalance"
-        android:layout_width="411dp"
-        android:layout_height="731dp"
+        android:layout_width="422dp"
+        android:layout_height="730dp"
         android:text=" "
-        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteX="-8dp"
         tools:layout_editor_absoluteY="0dp" />
 
     <TextView
